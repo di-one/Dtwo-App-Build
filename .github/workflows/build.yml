@@ -8,7 +8,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: '0'
         submodules: 'recursive'
@@ -16,13 +16,20 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.x'  # Assurez-vous que cette version est compatible avec votre projet MAUI
+        dotnet-version: '8.0.x'  # Assurez-vous que cette version est disponible
+
+    - name: Install MAUI workload for Windows
+      run: dotnet workload install maui-windows
 
     - name: Restore NuGet packages
       run: dotnet restore Dtwo.sln
 
     - name: Build the project
-      run: dotnet build Dtwo.sln --configuration Release -f net6.0-windows10.0.19041.0
+      run: |
+        dotnet build Dtwo.sln --configuration Release \
+          -f net8.0-windows10.0.17763.0 /p:UseMaui=true
 
     - name: Create App Packages
-      run: dotnet publish Dtwo.sln --configuration Release -f net6.0-windows10.0.19041.0 --no-build -o ./publish
+      run: |
+        dotnet publish Dtwo.sln --configuration Release \
+          -f net8.0-windows10.0.17763.0 --no-build -o ./publish
