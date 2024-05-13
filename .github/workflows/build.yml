@@ -1,4 +1,4 @@
-name: Build Desktop App
+name: Build and Publish MAUI App
 
 on:
   push:
@@ -9,9 +9,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: windows-2022
-
+  build-and-publish:
+    runs-on: windows-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -19,12 +18,12 @@ jobs:
         fetch-depth: '0'
         submodules: 'recursive'
 
-    - name: Setup .NET
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '8.0.x'  # Assurez-vous d'utiliser la version correcte du SDK .NET.
 
-    - name: Install MAUI workload for Windows
+    - name: Install MAUI workload
       run: dotnet workload install maui --ignore-failed-sources
 
     - name: Restore NuGet packages
@@ -33,8 +32,8 @@ jobs:
     - name: Build the project
       run: dotnet build Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj --configuration Release --no-restore
 
-    - name: Publish MAUI App
-      run: dotnet publish Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj -c Release -r win-x64 -o ./publish
+    - name: Publish the project
+      run: dotnet publish Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj --configuration Release --output ./publish
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v3
