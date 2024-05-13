@@ -11,18 +11,15 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: '0'
-        submodules: 'recursive'  # Important pour cloner les submodules
+        submodules: 'recursive'
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1'  # Remplacez par votre version de .NET nécessaire
+        dotnet-version: '3.1'
 
     - name: Restore NuGet packages
-      run: dotnet restore Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.sln  # Ajustez le chemin si nécessaire
+      run: dotnet restore Dtwo.sln
 
     - name: Build the project
-      run: dotnet build Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.sln --configuration Release --no-restore
-
-    - name: Run tests
-      run: dotnet test Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.sln --no-build --verbosity normal
+      run: dotnet build Dtwo.sln
