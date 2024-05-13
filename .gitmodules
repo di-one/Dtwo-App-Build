@@ -1,0 +1,33 @@
+[submodule "Dtwo.API"]
+	path = Dtwo.API
+	url = https://di-one@github.com/di-one/Dtwo.API.git
+[submodule "Dtwo.API.View"]
+	path = Dtwo.API.View
+	url = https://di-one@github.com/di-one/Dtwo.API.View.git
+[submodule "Dtwo.API.DofusBase"]
+	path = Dtwo.API.DofusBase
+	url = https://di-one@github.com/di-one/Dtwo.API.DofusBase.git
+[submodule "Dtwo.API.Dofus2"]
+	path = Dtwo.API.Dofus2
+	url = https://di-one@github.com/di-one/Dtwo.API.Dofus2.git
+[submodule "Dtwo.API.Retro"]
+	path = Dtwo.API.Retro
+	url = https://di-one@github.com/di-one/Dtwo.API.Retro.git
+[submodule "Dtwo.API.Hybride"]
+	path = Dtwo.API.Hybride
+	url = https://di-one@github.com/di-one/Dtwo.API.Hybride.git
+[submodule "Dtwo.API.Inputs"]
+	path = Dtwo.API.Inputs
+	url = https://di-one@github.com/di-one/Dtwo.API.Inputs.git
+[submodule "Dtwo.API.View.Components"]
+	path = Dtwo.API.View.Components
+	url = https://di-one@github.com/di-one/Dtwo.API.View.Components.git
+[submodule "Dtwo.Core"]
+	path = Dtwo.Core
+	url = https://di-one@github.com/di-one/Dtwo.Core.git
+[submodule "Dtwo.Core.Plugins"]
+	path = Dtwo.Core.Plugins
+	url = https://di-one@github.com/di-one/Dtwo.Core.Plugins.git
+[submodule "Dtwo.App.DesktopApp"]
+	path = Dtwo.App.DesktopApp
+	url = https://di-one@github.com/di-one/Dtwo.App.DesktopApp.git
