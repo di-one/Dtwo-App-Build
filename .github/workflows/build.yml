@@ -32,4 +32,9 @@ jobs:
 
     - name: Create App Packages
       run: dotnet publish Dtwo.sln --configuration Release --framework net8.0-windows10.0.22621.0 /p:BUILD_FOR_WINDOWS=true --no-build -o ./publish
-
+ 
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: published-app
+        path: ./publish
