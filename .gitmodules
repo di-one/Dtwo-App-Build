@@ -31,3 +31,6 @@
 [submodule "Dtwo.App.DesktopApp"]
 	path = Dtwo.App.DesktopApp
 	url = https://di-one@github.com/di-one/Dtwo.App.DesktopApp.git
+[submodule "Dtwo.Plugins"]
+	path = Dtwo.Plugins
+	url = https://di-one@github.com/di-one/Dtwo.Plugins.git
