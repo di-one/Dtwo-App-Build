@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtwo.Core", "Dtwo.Core\Dtwo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtwo.Core.Plugins", "Dtwo.Core.Plugins\Dtwo.Core.Plugins.csproj", "{FCDB66BC-A4E9-4C71-9033-C4004079A14F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtwo.Plugins", "Dtwo.Plugins\Dtwo.Plugins.csproj", "{3A20EB17-E657-4592-9128-3DACAFC0CDE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,14 @@ Global
 		{FCDB66BC-A4E9-4C71-9033-C4004079A14F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCDB66BC-A4E9-4C71-9033-C4004079A14F}.Release|x86.ActiveCfg = Release|Any CPU
 		{FCDB66BC-A4E9-4C71-9033-C4004079A14F}.Release|x86.Build.0 = Release|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A20EB17-E657-4592-9128-3DACAFC0CDE7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
