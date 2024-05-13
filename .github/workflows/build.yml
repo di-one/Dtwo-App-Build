@@ -1,6 +1,12 @@
 name: Build Desktop App
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -16,21 +22,24 @@ jobs:
         submodules: 'recursive'
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
 
     - name: Install MAUI workload for Windows
-      run: dotnet workload install maui --ignore-failed-sources 
+      run: dotnet workload install maui --ignore-failed-sources
 
     - name: Restore NuGet packages
-      run: dotnet restore Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj /p:BUILD_FOR_WINDOWS=true
+      run: dotnet restore /p:BUILD_FOR_WINDOWS=true
+
+    - name: Build dependencies
+      run: dotnet build --configuration Release --no-restore
 
     - name: Publish MAUI App
-      run: dotnet publish Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj -c Release -o ./publish
+      run: dotnet publish Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj -c Release -f net8.0-windows10.0.22621.0 -o ./publish
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: published-app
         path: ./publish
