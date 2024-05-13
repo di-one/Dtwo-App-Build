@@ -2,6 +2,9 @@ name: Build Desktop App
 
 on: [push, pull_request]
 
+env:
+  BUILD_FOR_WINDOWS: true
+
 jobs:
   build:
     runs-on: windows-latest
@@ -22,13 +25,11 @@ jobs:
       run: dotnet workload install maui-windows
 
     - name: Restore NuGet packages
-      run: dotnet restore Dtwo.sln
+      run: dotnet restore Dtwo.sln /p:BUILD_FOR_WINDOWS=true
 
     - name: Build the project
-      run: |
-        dotnet build Dtwo.sln --configuration Release /p:UseMaui=true
+      run: dotnet build Dtwo.sln --configuration Release /p:UseMaui=true /p:BUILD_FOR_WINDOWS=true
 
     - name: Create App Packages
-      run: |
-        dotnet publish Dtwo.sln --configuration Release --framework net8.0 --no-build -o ./publish
+      run: dotnet publish Dtwo.sln --configuration Release --framework net8.0-windows10.0.22621.0 /p:BUILD_FOR_WINDOWS=true --no-build -o ./publish
 
