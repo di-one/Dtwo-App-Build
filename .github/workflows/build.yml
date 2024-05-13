@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     env:
       BUILD_FOR_WINDOWS: true
 
@@ -20,17 +20,19 @@ jobs:
       with:
         dotnet-version: '8.0.x'  # Assurez-vous que cette version est disponible
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      with:
+        vs-prerelease: true
+
     - name: Install MAUI workload for Windows
-      run: dotnet workload install maui-windows
+      run:  dotnet workload install maui --ignore-failed-sources 
 
     - name: Restore NuGet packages
-      run: dotnet restore Dtwo.sln /p:BUILD_FOR_WINDOWS=true
+      run: dotnet restore Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj /p:BUILD_FOR_WINDOWS=true
 
-    - name: Build the project
-      run: dotnet build Dtwo.sln --configuration Release /p:UseMaui=true /p:BUILD_FOR_WINDOWS=true
-
-    - name: Create App Packages
-      run: dotnet publish Dtwo.sln --configuration Release --framework net8.0-windows10.0.22621.0 /p:BUILD_FOR_WINDOWS=true --no-build -o ./publish
+    - name: Build MAUI Windows
+      run: msbuild Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj -r -p:Configuration=Release -p:RestorePackages=false
  
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
