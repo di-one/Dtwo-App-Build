@@ -26,8 +26,8 @@ jobs:
 
     - name: Build the project
       run: |
-        dotnet build Dtwo.sln --configuration Release -f net8.0-windows10.0.17763.0 /p:UseMaui=true
+        dotnet build Dtwo.sln --configuration Release -f net8.0-windows10.0.22621.0 /p:UseMaui=true
 
     - name: Create App Packages
       run: |
-        dotnet publish Dtwo.sln --configuration Release -f net8.0-windows10.0.17763.0 --no-build -o ./publish
+        dotnet publish Dtwo.sln --configuration Release -f net8.0-windows10.0.22621.0 --no-build -o ./publish
