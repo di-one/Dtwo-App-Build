@@ -18,22 +18,17 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '8.0.x'  # Assurez-vous que cette version est disponible
-
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
-      with:
-        vs-prerelease: true
+        dotnet-version: '8.0.x'
 
     - name: Install MAUI workload for Windows
-      run:  dotnet workload install maui --ignore-failed-sources 
+      run: dotnet workload install maui --ignore-failed-sources 
 
     - name: Restore NuGet packages
       run: dotnet restore Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj /p:BUILD_FOR_WINDOWS=true
 
-    - name: Build MAUI Windows
-      run: msbuild Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj -r -p:Configuration=Release -p:RestorePackages=false
- 
+    - name: Publish MAUI App
+      run: dotnet publish Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj -c Release -o ./publish
+
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
       with:
