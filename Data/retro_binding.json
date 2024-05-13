@@ -1,0 +1,34 @@
+[
+	{
+		"ClassName" : "CharacterSelectedSuccessMessage",
+		"Identifier" : "ASK"
+	},
+	{
+		"ClassName" : "GameActionFightDeathMessage",
+		"Identifier" : "GA;103"
+	},
+	{
+		"ClassName" : "GameFightEndMessage",
+		"Identifier" : "GE"
+	},
+	{
+		"ClassName" : "GameFightStartMessage",
+		"Identifier" : "GS"
+	},
+	{
+		"ClassName" : "GameFightTurnEndMessage",
+		"Identifier" : "GTF"
+	},
+	{
+		"ClassName" : "GameFightTurnStartMessage",
+		"Identifier" : "GTS"
+	},
+	{
+		"ClassName" : "PartyJoinMessage",
+		"Identifier" : "PM+"
+	},
+	{
+		"ClassName" : "PartyUpdateMessage",
+		"Identifier" : "PM~"
+	}
+]
