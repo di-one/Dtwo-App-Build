@@ -1,0 +1,28 @@
+name: Build Desktop App
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+        submodules: 'recursive'  # Important pour cloner les submodules
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1'  # Remplacez par votre version de .NET nécessaire
+
+    - name: Restore NuGet packages
+      run: dotnet restore Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.sln  # Ajustez le chemin si nécessaire
+
+    - name: Build the project
+      run: dotnet build Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.sln --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.sln --no-build --verbosity normal
