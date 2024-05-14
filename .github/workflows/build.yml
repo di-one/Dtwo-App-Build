@@ -31,6 +31,11 @@ jobs:
 
     - name: Create App Packages
       run: dotnet publish Dtwo.App.DesktopApp/Dtwo.App.DesktopApp.csproj --configuration Release --framework net8.0-windows10.0.22621.0 /p:BUILD_FOR_WINDOWS=true -o ./publish
+
+    - name: Copy Data folder
+      run: |
+        mkdir ./publish/Data
+        xcopy Data ./publish/Data /E /H /C /I
  
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
